@@ -1,0 +1,70 @@
+$ dotnet restore IngresDateKit.sln --locked-mode
+  Determining projects to restore...
+  Restored ${EXTRACTED_HANDOFF_ROOT}/src/IngresDates/IngresDates.csproj (in 111 ms).
+  Restored ${EXTRACTED_HANDOFF_ROOT}/vendor/Actian.EFCore/src/Actian.EFCore/Actian.EFCore.csproj (in 216 ms).
+  Restored ${EXTRACTED_HANDOFF_ROOT}/src/IngresDates.Portable/IngresDates.Portable.csproj (in 216 ms).
+  Restored ${EXTRACTED_HANDOFF_ROOT}/tests/IngresDates.Tests/IngresDates.Tests.csproj (in 216 ms).
+  Restored ${EXTRACTED_HANDOFF_ROOT}/tests/IngresDates.IngresTests/IngresDates.IngresTests.csproj (in 216 ms).
+  Restored ${EXTRACTED_HANDOFF_ROOT}/src/IngresDates.EntityFrameworkCore/IngresDates.EntityFrameworkCore.csproj (in 216 ms).
+  Restored ${EXTRACTED_HANDOFF_ROOT}/examples/PortableDemo/PortableDemo.csproj (in 224 ms).
+  Restored ${EXTRACTED_HANDOFF_ROOT}/tests/IngresDates.PortableTests/IngresDates.PortableTests.csproj (in 224 ms).
+  Restored ${EXTRACTED_HANDOFF_ROOT}/examples/DateDemo/DateDemo.csproj (in 245 ms).
+
+$ dotnet tool restore
+Tool 'dotnet-ef' (version '10.0.3') was restored. Available commands: dotnet-ef
+
+Restore was successful.
+
+$ bash scripts/test.sh
+  Determining projects to restore...
+  Restored ${EXTRACTED_HANDOFF_ROOT}/src/IngresDates/IngresDates.csproj (in 203 ms).
+  Restored ${EXTRACTED_HANDOFF_ROOT}/src/IngresDates.EntityFrameworkCore/IngresDates.EntityFrameworkCore.csproj (in 340 ms).
+  Restored ${EXTRACTED_HANDOFF_ROOT}/tests/IngresDates.Tests/IngresDates.Tests.csproj (in 344 ms).
+  Restored ${EXTRACTED_HANDOFF_ROOT}/src/IngresDates.Portable/IngresDates.Portable.csproj (in 338 ms).
+  Restored ${EXTRACTED_HANDOFF_ROOT}/vendor/Actian.EFCore/src/Actian.EFCore/Actian.EFCore.csproj (in 343 ms).
+  Restored ${EXTRACTED_HANDOFF_ROOT}/tests/IngresDates.PortableTests/IngresDates.PortableTests.csproj (in 345 ms).
+  Restored ${EXTRACTED_HANDOFF_ROOT}/examples/PortableDemo/PortableDemo.csproj (in 342 ms).
+  Restored ${EXTRACTED_HANDOFF_ROOT}/tests/IngresDates.IngresTests/IngresDates.IngresTests.csproj (in 345 ms).
+  Restored ${EXTRACTED_HANDOFF_ROOT}/examples/DateDemo/DateDemo.csproj (in 442 ms).
+  IngresDates -> ${EXTRACTED_HANDOFF_ROOT}/src/IngresDates/bin/Debug/net10.0/IngresDates.dll
+  IngresDates.Portable -> ${EXTRACTED_HANDOFF_ROOT}/src/IngresDates.Portable/bin/Debug/net10.0/IngresDates.Portable.dll
+  Actian.EFCore -> ${EXTRACTED_HANDOFF_ROOT}/vendor/Actian.EFCore/src/Actian.EFCore/bin/Debug/net10.0/Actian.EFCore.dll
+  IngresDates.Tests -> ${EXTRACTED_HANDOFF_ROOT}/tests/IngresDates.Tests/bin/Debug/net10.0/IngresDates.Tests.dll
+  The package Actian.EFCore.10.0.0 is missing a readme. Go to https://aka.ms/nuget/authoring-best-practices/readme to learn why package readmes are important.
+  Successfully created package '${EXTRACTED_HANDOFF_ROOT}/vendor/Actian.EFCore/src/Actian.EFCore/bin/Debug/Actian.EFCore.10.0.0.nupkg'.
+  Successfully created package '${EXTRACTED_HANDOFF_ROOT}/vendor/Actian.EFCore/src/Actian.EFCore/bin/Debug/Actian.EFCore.10.0.0.snupkg'.
+  IngresDates.EntityFrameworkCore -> ${EXTRACTED_HANDOFF_ROOT}/src/IngresDates.EntityFrameworkCore/bin/Debug/net10.0/IngresDates.EntityFrameworkCore.dll
+  PortableDemo -> ${EXTRACTED_HANDOFF_ROOT}/examples/PortableDemo/bin/Debug/net10.0/PortableDemo.dll
+  IngresDates.PortableTests -> ${EXTRACTED_HANDOFF_ROOT}/tests/IngresDates.PortableTests/bin/Debug/net10.0/IngresDates.PortableTests.dll
+  DateDemo -> ${EXTRACTED_HANDOFF_ROOT}/examples/DateDemo/bin/Debug/net10.0/DateDemo.dll
+  IngresDates.IngresTests -> ${EXTRACTED_HANDOFF_ROOT}/tests/IngresDates.IngresTests/bin/Debug/net10.0/IngresDates.IngresTests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:06.36
+Test run for ${EXTRACTED_HANDOFF_ROOT}/tests/IngresDates.Tests/bin/Debug/net10.0/IngresDates.Tests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: ${EXTRACTED_HANDOFF_ROOT}/tests/IngresDates.Tests/TestResults/unit.trx
+
+Passed!  - Failed:     0, Passed:    35, Skipped:     0, Total:    35, Duration: 55 ms - IngresDates.Tests.dll (net10.0)
+Test run for ${EXTRACTED_HANDOFF_ROOT}/tests/IngresDates.PortableTests/bin/Debug/net10.0/IngresDates.PortableTests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: ${EXTRACTED_HANDOFF_ROOT}/tests/IngresDates.PortableTests/TestResults/portable.trx
+
+Passed!  - Failed:     0, Passed:     8, Skipped:     0, Total:     8, Duration: 796 ms - IngresDates.PortableTests.dll (net10.0)
+Test run for ${EXTRACTED_HANDOFF_ROOT}/tests/IngresDates.IngresTests/bin/Debug/net10.0/IngresDates.IngresTests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: ${EXTRACTED_HANDOFF_ROOT}/tests/IngresDates.IngresTests/TestResults/ingres.trx
+
+Passed!  - Failed:     0, Passed:   283, Skipped:     0, Total:   283, Duration: 1 s - IngresDates.IngresTests.dll (net10.0)

@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup Condition="'$(SolutionName)' == 'Actian.EFCore.WithExternals'">
+    <UseExternals>True</UseExternals>
+    <ExternalDir>$(MSBuildThisFileDirectory)\..\..\external</ExternalDir>
+  </PropertyGroup>
+</Project>

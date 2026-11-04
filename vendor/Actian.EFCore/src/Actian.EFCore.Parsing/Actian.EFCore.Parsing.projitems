@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>35f858f2-19ed-4ff8-987e-069a8a18e94a</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Actian.EFCore.Parsing</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ActianSqlExecutor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\ActianSqlCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\ActianSqlGrammar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\ActianSqlParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\ActianSqlStatement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\ActianSqlToken.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\ActianSqlTokenizer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\ActianSqlTokenType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\SpracheExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\Unit.cs" />
+  </ItemGroup>
+</Project>

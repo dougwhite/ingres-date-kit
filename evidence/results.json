@@ -1,0 +1,26 @@
+{
+  "unit": {
+    "total": 35,
+    "passed": 35,
+    "failed": 0,
+    "notExecuted": 0
+  },
+  "portable": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "notExecuted": 0
+  },
+  "ingres-source": {
+    "total": 283,
+    "passed": 283,
+    "failed": 0,
+    "notExecuted": 0
+  },
+  "ingres-restored": {
+    "total": 283,
+    "passed": 283,
+    "failed": 0,
+    "notExecuted": 0
+  }
+}

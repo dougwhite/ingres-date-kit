@@ -1,0 +1,88 @@
+
+/* SQL script created by COPYDB, version II 12.0.0 (a64.lnx/100). */
+
+\sql
+set autocommit on
+\p\g
+set nojournaling
+\p\g
+\sql
+set session with privileges=all
+\p\g
+set session collation none
+\p\g
+set session unicode_collation none
+\p\g
+set float_format 'f4G79.38'
+\p\g
+set float_format 'f8G79.38'
+\p\g
+set decimal '.'
+\p\g
+set date_format 'multinational4'
+\p\g
+set money_format 'L:$'
+\p\g
+set money_prec '2'
+\p\g
+set nocreate_compression
+\p\g
+\nocontinue
+
+	/* TABLES */
+create table date_samples(
+	id integer not null,
+	label varchar(80) not null,
+	native_value ingresdate not null,
+	nullable_value ingresdate,
+	lead_time ingresdate not null,
+	required_date ingresdate not null default ''
+)
+with duplicates,
+structure = heap,
+nojournaling,
+page_size = 8192,
+security_audit=(table,norow)
+\p\g
+copy date_samples(
+	id= c0tab,
+	label= varchar(0)tab,
+	native_value= c0tab,
+	nullable_value= c0tab with null(']^NULL^['),
+	lead_time= c0tab,
+	required_date= c0nl)
+from 'date_samples.ingres'
+with notnull_empty,
+	row_estimate = 14
+\p\g
+set journaling on date_samples
+\p\g
+create table multi_database_samples(
+	id integer not null,
+	value ingresdate not null,
+	nullable_value ingresdate
+)
+with duplicates,
+structure = heap,
+nojournaling,
+page_size = 8192,
+security_audit=(table,norow)
+\p\g
+copy multi_database_samples(
+	id= c0tab,
+	value= c0tab,
+	nullable_value= c0nl with null(']^NULL^['))
+from 'multi_database_samples.ingres'
+with notnull_empty,
+	row_estimate = 3
+\p\g
+set journaling on multi_database_samples
+\p\g
+
+	/* CONSTRAINTS */
+alter table date_samples add  PRIMARY KEY("id")
+with page_size = 8192
+\p\g
+alter table multi_database_samples add  PRIMARY KEY("id")
+with page_size = 8192
+\p\g

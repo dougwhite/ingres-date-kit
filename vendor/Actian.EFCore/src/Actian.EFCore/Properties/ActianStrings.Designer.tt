@@ -1,0 +1,5 @@
+<#
+    Session["ResourceFile"] = "ActianStrings.resx";
+    Session["LoggingDefinitionsClass"] = "Diagnostics.Internal.ActianLoggingDefinitions";
+#>
+<#@ include file="..\..\..\tools\Resources.tt" #>

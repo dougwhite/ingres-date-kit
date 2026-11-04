@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/IngresDates.Portable/IngresDates.Portable.csproj"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.3"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.3"/>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0"/>
+    <ProjectReference Include="../../src/IngresDates.EntityFrameworkCore/IngresDates.EntityFrameworkCore.csproj"/>
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.14"/>
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.5"/>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,27 @@
+Actual EF Core version: 10.0.3.0
+1: Empty and SQL null; Empty []; optional=; interval=432000 seconds
+2: Calendar date; Date [2026-01-31]; optional=01/31/2026 00:00:00; interval=1 months
+3: Timestamp; Timestamp [2026-01-31 12:34:56.000]; optional=01/31/2026 12:34:56; interval=1 years
+4: Five day interval; Interval [432000 seconds]; optional=; interval=-432000 seconds
+5: Calendar month interval; Interval [1 months]; optional=; interval=2 months
+6: Calendar year interval; Interval [1 years]; optional=; interval=31536000 seconds
+7: Mixed negative interval; Interval [1 years 2 months -244800 seconds]; optional=; interval=439200 seconds
+8: Midnight timestamp; Timestamp [2026-01-31 00:00:00.000]; optional=01/31/2026 00:00:00; interval=0 seconds
+
+Ordinary nullable facade query:
+SELECT "d"."id"
+FROM "ingres"."date_samples" AS "d"
+WHERE CASE
+    WHEN "d"."required_date" = ingresdate('') THEN NULL
+    ELSE CAST("d"."required_date" AS timestamp without time zone)
+END IS NULL
+Matched: 1, 4, 5, 6, 7
+
+Native arithmetic query:
+-- @fiveDays='432000 seconds' (Nullable = false) (Size = 200)
+SELECT "d"."id" AS "Id", CAST("d"."native_value" + ingresdate(@fiveDays) AS varchar(200)) AS "Shifted"
+FROM "ingres"."date_samples" AS "d"
+WHERE "d"."native_value" >= ingresdate('1582_01_01')
+2 + 5 days = 2026-02-05
+3 + 5 days = 2026-02-05 12:34:56.000
+8 + 5 days = 2026-02-05 00:00:00.000

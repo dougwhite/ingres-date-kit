@@ -1,0 +1,9 @@
+Test run for ${HANDOFF_ROOT}/tests/IngresDates.IngresTests/bin/Debug/net10.0/IngresDates.IngresTests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+WARNING: Overwriting results file: ${VALIDATION_OUTPUT}/ingres-restored.trx
+Results File: ${VALIDATION_OUTPUT}/ingres-restored.trx
+
+Passed!  - Failed:     0, Passed:   283, Skipped:     0, Total:   283, Duration: 1 s - IngresDates.IngresTests.dll (net10.0)

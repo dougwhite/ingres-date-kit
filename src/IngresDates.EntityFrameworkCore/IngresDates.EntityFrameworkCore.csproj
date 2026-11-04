@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="../IngresDates/IngresDates.csproj"/>
+    <ProjectReference Include="../../vendor/Actian.EFCore/src/Actian.EFCore/Actian.EFCore.csproj"/>
+  </ItemGroup>
+</Project>

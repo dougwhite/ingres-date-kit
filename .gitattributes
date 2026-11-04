@@ -1,0 +1,7 @@
+* text=auto
+*.cs text eol=lf
+*.sh text eol=lf
+*.sql text eol=lf
+*.ingres -text -whitespace
+vendor/** -whitespace
+*.patch -whitespace

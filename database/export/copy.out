@@ -1,0 +1,38 @@
+
+/* SQL script created by COPYDB, version II 12.0.0 (a64.lnx/100). */
+
+\sql
+set autocommit on
+\p\g
+set lockmode session where readlock=nolock
+\p\g
+\sql
+set session with privileges=all
+\p\g
+set float_format 'f4G79.38'
+\p\g
+set float_format 'f8G79.38'
+\p\g
+set decimal '.'
+\p\g
+set date_format 'multinational4'
+\p\g
+set money_format 'L:$'
+\p\g
+set money_prec '2'
+\p\g
+copy date_samples(
+	id= c0tab,
+	label= varchar(0)tab,
+	native_value= c0tab,
+	nullable_value= c0tab with null(']^NULL^['),
+	lead_time= c0tab,
+	required_date= c0nl)
+into 'date_samples.ingres'
+\p\g
+copy multi_database_samples(
+	id= c0tab,
+	value= c0tab,
+	nullable_value= c0nl with null(']^NULL^['))
+into 'multi_database_samples.ingres'
+\p\g

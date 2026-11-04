@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Ingres date examples</title>
+<style>body{font:17px system-ui;max-width:1100px;margin:40px auto;padding:0 24px}table{border-collapse:collapse;width:100%}td,th{padding:12px;border:1px solid #ddd;text-align:left}pre{white-space:pre-wrap}button{padding:8px}small{color:#555}</style>
+<h1>Ingres date examples</h1><p>Native values preserve their kind. Required date is an ordinary nullable application view; clearing it saves an Ingres blank.</p>
+<table><thead><tr><th>Row</th><th>Native value</th><th>Required date</th><th>Action</th></tr></thead><tbody id="rows"></tbody></table>
+<p id="status" role="status"></p>
+<script>
+const rows=document.getElementById("rows"), message=document.getElementById("status");
+async function load(){
+ const response=await fetch('/api/samples');if(!response.ok)throw Error(await response.text());
+ const data=await response.json();rows.replaceChildren();
+ for(const item of data){const tr=document.createElement('tr');
+  for(const text of [item.label,JSON.stringify(item.native),item.requiredDate??'(blank)']){const td=document.createElement('td');td.textContent=text;tr.append(td)}
+  const td=document.createElement('td'),button=document.createElement('button');button.textContent='Clear required date';
+  button.onclick=async()=>{try{const result=await fetch(`/api/samples/${item.id}/clear`,{method:'POST'});if(!result.ok)throw Error(await result.text());await load();message.textContent='Saved blank date.'}catch(e){message.textContent=e.message}};
+  td.append(button);tr.append(td);rows.append(tr);
+ }
+}load().catch(e=>message.textContent=e.message);
+</script></html>

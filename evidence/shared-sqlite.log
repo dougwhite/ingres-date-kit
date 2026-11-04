@@ -1,0 +1,4 @@
+1: Empty [], SQL null=True
+2: Date [2026-01-31], SQL null=False
+3: Interval [432000 seconds], SQL null=False
+The same entity and application code ran with provider: sqlite. PostgreSQL/SQL Server use lossless JSON storage; Ingres uses native ingresdate.

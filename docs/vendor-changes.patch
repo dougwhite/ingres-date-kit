@@ -1,0 +1,51 @@
+--- a/src/Directory.Build.props
++++ b/src/Directory.Build.props
+@@ -1,3 +1,4 @@
++<!-- Modified for this example: removed the SourceLink build dependency. -->
+ <Project>
+   <Import Project="..\Directory.Build.props" />
+ 
+@@ -6,8 +7,6 @@
+     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+   </PropertyGroup>
+ 
+-  <ItemGroup>
+-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+-  </ItemGroup>
++
+ 
+ </Project>
+--- a/src/Actian.EFCore/Actian.EFCore.csproj
++++ b/src/Actian.EFCore/Actian.EFCore.csproj
+@@ -1,4 +1,5 @@
+-﻿<Project Sdk="Microsoft.NET.Sdk">
++<!-- Modified for this example: use locally supplied Actian.Client 8.0.8; remove unused Microsoft.Data.SqlClient and SourceLink dependencies. -->
++<Project Sdk="Microsoft.NET.Sdk">
+ 
+   <PropertyGroup>
+     <TargetFrameworks>net10.0</TargetFrameworks>
+@@ -64,7 +65,7 @@
+   </ItemGroup>
+ 
+   <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+-    <PackageReference Include="Actian.Client" Version="10.0.0" />
++    <PackageReference Include="Actian.Client" Version="8.0.8" />
+     <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="10.0.3" />
+     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.3" />
+     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.3" />
+@@ -100,13 +101,9 @@
+     <Compile Include="..\Shared\*.cs" />
+   </ItemGroup>
+ 
+-  <ItemGroup>
+-    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.4" />
+-  </ItemGroup>
+ 
+-  <ItemGroup>
+-    <PackageReference Update="Microsoft.SourceLink.GitHub" Version="10.0.103" />
+-  </ItemGroup>
++
++
+ 
+   <Import Project="..\Actian.EFCore.Parsing\Actian.EFCore.Parsing.projitems" Label="Shared" />
+ 

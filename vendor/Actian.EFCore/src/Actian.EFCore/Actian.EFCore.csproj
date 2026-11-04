@@ -1,0 +1,112 @@
+<!-- Modified for this example: use locally supplied Actian.Client 8.0.8; remove unused Microsoft.Data.SqlClient and SourceLink dependencies. -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net10.0</TargetFrameworks>
+    <Description>Entity Framework Core provider for Actian</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <Company>Actian Corporation</Company>
+    <Authors>Actian Corporation</Authors>
+    <Copyright>©2026 Actian Corporation. All Rights Reserved.</Copyright>
+    <Product>Actian Entity Framework Core Provider</Product>
+    <Description>Actian Entity Framework Core Provider</Description>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+
+    <VersionPrefix>10.0.0</VersionPrefix>
+    <MinClientVersion>4.3</MinClientVersion>
+
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/2PS-Consulting/Actian.EFCore.git</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+
+    <PackageProjectUrl>https://github.com/2PS-Consulting/Actian.EFCore</PackageProjectUrl>
+
+    <PackageTags>Actian;ActianX;Ingres;Entity Framework Core;entity-framework-core;EF;Data;O/RM;ORM;EntityFramework;EntityFrameworkCore;EFCore</PackageTags>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <NoWarn>$(NoWarn);EF9100</NoWarn>  <!-- Precompiled query is experimental -->
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)\..\..\LICENSE" Pack="true" PackagePath="" />
+    <!-- <None Include="$(MSBuildThisFileDirectory)[The icon file name]" Pack="true" PackagePath="" /> -->
+  </ItemGroup>
+
+  <!-- Language configuration -->
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <!--<TreatWarningsAsErrors>true</TreatWarningsAsErrors>-->
+
+    <!-- The version property specified contains SemVer 2.0.0 components or SemVer 1.0.0 components that may not be supported on NuGet clients older than v4.3 -->
+    <NoWarn>$(NoWarn);NU5105</NoWarn>
+
+    <!-- Working around https://github.com/NuGet/Home/issues/8467 -->
+    <NoWarn>$(NoWarn);NU5131</NoWarn>
+
+    <!-- Allow prerelease packages -->
+    <NoWarn>$(NoWarn);NU5104</NoWarn>
+
+    <!-- Ignore naming Styles -->
+    <NoWarn>$(NoWarn);IDE1006</NoWarn>
+
+    <!-- Ignore missing XML comments -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+    <PackageReference Include="Actian.Client" Version="8.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
+    <PackageReference Include="Sprache" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <PackageReference Include="Actian.Client" Version="8.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="10.0.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.3" />
+    <PackageReference Include="Sprache" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+
+    <None Update="Properties\ActianStrings.Designer.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ActianStrings.Designer.cs</LastGenOutput>
+    </None>
+
+    <Compile Update="Properties\ActianStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ActianStrings.Designer.tt</DependentUpon>
+    </Compile>
+
+    <EmbeddedResource Update="Properties\ActianStrings.resx">
+      <CustomToolNamespace>Actian.EFCore.Internal</CustomToolNamespace>
+    </EmbeddedResource>
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Shared\*.cs" />
+  </ItemGroup>
+
+
+
+
+
+  <Import Project="..\Actian.EFCore.Parsing\Actian.EFCore.Parsing.projitems" Label="Shared" />
+
+
+
+</Project>

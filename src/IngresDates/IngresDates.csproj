@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Explicit Ingres date values, intervals, profiles and JSON.</Description>
+  </PropertyGroup>
+</Project>

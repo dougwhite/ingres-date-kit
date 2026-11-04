@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <ItemGroup>
+    <ProjectReference Include="../../src/IngresDates.EntityFrameworkCore/IngresDates.EntityFrameworkCore.csproj"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>all</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="wwwroot/**/*" CopyToOutputDirectory="PreserveNewest"/>
+  </ItemGroup>
+</Project>

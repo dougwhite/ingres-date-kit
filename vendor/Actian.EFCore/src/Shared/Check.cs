@@ -1,0 +1,146 @@
+﻿// Copyright (c) 2024 Actian Corporation. All Rights Reserved.
+// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using JetBrains.Annotations;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+
+namespace Actian.EFCore.Utilities
+{
+    [DebuggerStepThrough]
+    internal static class Check
+    {
+        [ContractAnnotation("value:null => halt")]
+        public static T NotNull<T>([NoEnumeration] T value, [InvokerParameterName][NotNull] string parameterName)
+        {
+#pragma warning disable IDE0041 // Use 'is null' check
+            if (ReferenceEquals(value, null))
+#pragma warning restore IDE0041 // Use 'is null' check
+            {
+                NotEmpty(parameterName, nameof(parameterName));
+
+                throw new ArgumentNullException(parameterName);
+            }
+
+            return value;
+        }
+
+        [ContractAnnotation("value:null => halt")]
+        public static IReadOnlyList<T> NotEmpty<T>(IReadOnlyList<T> value, [InvokerParameterName][NotNull] string parameterName)
+        {
+            NotNull(value, parameterName);
+
+            if (value.Count == 0)
+            {
+                NotEmpty(parameterName, nameof(parameterName));
+
+#if NET10_0_OR_GREATER
+                // Code for .NET 10 and newer versions
+                // Use string.Format to avoid "Non-invocable member 'AbstractionsStrings.ArgumentIsEmpty' cannot be used like a method." exception.            
+                throw new ArgumentException(
+                string.Format(
+                    AbstractionsStrings.CollectionArgumentIsEmpty, 
+                    parameterName),
+                parameterName);
+#else
+                // Code for older versions (.NET 6, .NET 7, etc.)
+                // The old code where AbstractionsStrings.CollectionArgumentIsEmpty 
+                // was used like a method.
+                throw new ArgumentException(AbstractionsStrings.CollectionArgumentIsEmpty(parameterName));
+#endif
+            }
+
+            return value;
+        }
+
+        [ContractAnnotation("value:null => halt")]
+        public static string NotEmpty(string value, [InvokerParameterName][NotNull] string parameterName)
+        {
+            Exception e = null;
+            if (value is null)
+            {
+                e = new ArgumentNullException(parameterName);
+            }
+            else if (value.Trim().Length == 0)
+            {
+#if NET10_0_OR_GREATER
+                // Code for .NET 10 and newer versions
+                // Use string.Format to avoid "Non-invocable member 'AbstractionsStrings.ArgumentIsEmpty' cannot be used like a method." exception.            
+                throw new ArgumentException(
+                    string.Format(
+                                AbstractionsStrings.ArgumentIsEmpty, // Now a string property/field
+                                parameterName),
+                            parameterName);
+#else
+                // Code for older versions (.NET 6, .NET 7, etc.)
+                // The old code where AbstractionsStrings.CollectionArgumentIsEmpty 
+                // was used like a method.
+                e = new ArgumentException(AbstractionsStrings.ArgumentIsEmpty(parameterName));
+#endif
+            }
+
+            if (e != null)
+            {
+                NotEmpty(parameterName, nameof(parameterName));
+
+                throw e;
+            }
+
+            return value;
+        }
+
+        public static string NullButNotEmpty(string value, [InvokerParameterName][NotNull] string parameterName)
+        {
+            if (!(value is null)
+                && value.Length == 0)
+            {
+                NotEmpty(parameterName, nameof(parameterName));
+
+#if NET10_0_OR_GREATER
+                // Code for .NET 10 and newer versions
+                // Use string.Format to avoid "Non-invocable member 'AbstractionsStrings.ArgumentIsEmpty' cannot be used like a method." exception.            
+                throw new ArgumentException(
+                string.Format(
+                    AbstractionsStrings.CollectionArgumentIsEmpty, 
+                    parameterName),
+                parameterName);
+#else
+                // Code for older versions (.NET 6, .NET 7, etc.)
+                // The old code where AbstractionsStrings.CollectionArgumentIsEmpty 
+                // was used like a method.
+                throw new ArgumentException(AbstractionsStrings.ArgumentIsEmpty(parameterName));
+#endif
+            }
+
+            return value;
+        }
+
+        public static IReadOnlyList<T> HasNoNulls<T>(IReadOnlyList<T> value, [InvokerParameterName][NotNull] string parameterName)
+            where T : class
+        {
+            NotNull(value, parameterName);
+
+            if (value.Any(e => e == null))
+            {
+                NotEmpty(parameterName, nameof(parameterName));
+
+                throw new ArgumentException(parameterName);
+            }
+
+            return value;
+        }
+
+        [Conditional("DEBUG")]
+        public static void DebugAssert(bool condition, string message)
+        {
+            if (!condition)
+            {
+                throw new Exception($"Check.DebugAssert failed: {message}");
+            }
+        }
+    }
+}

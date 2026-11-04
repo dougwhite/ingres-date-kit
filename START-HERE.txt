@@ -1,0 +1,16 @@
+Ingres dates developer example
+
+Open README.md first (any text editor, or the GitHub repository).
+
+The ZIP includes the custom type, EF Core 10 integration, two example apps,
+a full test suite, actual native Ingres COPY export, and verification results.
+
+The Actian.Client driver is proprietary and is not included. Obtain your own
+licensed 8.0.8 package and place its nupkg in local-packages before restoring.
+
+The shared example shows one entity/application flow across Ingres, PostgreSQL
+and SQL Server. Native Ingres and SQLite storage were run; PostgreSQL/SQL Server
+live-server execution is outside this package's verified scope.
+
+For automatic migrations, read docs/KNOWN-PROVIDER-ISSUES.md: the reviewed SQL
+script route is verified, while the pinned provider has a migration-lock bug.

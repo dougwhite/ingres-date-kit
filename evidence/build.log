@@ -1,0 +1,15 @@
+  Actian.EFCore -> ${HANDOFF_ROOT}/vendor/Actian.EFCore/src/Actian.EFCore/bin/Debug/net10.0/Actian.EFCore.dll
+  IngresDates -> ${HANDOFF_ROOT}/src/IngresDates/bin/Debug/net10.0/IngresDates.dll
+  IngresDates.Portable -> ${HANDOFF_ROOT}/src/IngresDates.Portable/bin/Debug/net10.0/IngresDates.Portable.dll
+  IngresDates.EntityFrameworkCore -> ${HANDOFF_ROOT}/src/IngresDates.EntityFrameworkCore/bin/Debug/net10.0/IngresDates.EntityFrameworkCore.dll
+  IngresDates.Tests -> ${HANDOFF_ROOT}/tests/IngresDates.Tests/bin/Debug/net10.0/IngresDates.Tests.dll
+  PortableDemo -> ${HANDOFF_ROOT}/examples/PortableDemo/bin/Debug/net10.0/PortableDemo.dll
+  IngresDates.PortableTests -> ${HANDOFF_ROOT}/tests/IngresDates.PortableTests/bin/Debug/net10.0/IngresDates.PortableTests.dll
+  DateDemo -> ${HANDOFF_ROOT}/examples/DateDemo/bin/Debug/net10.0/DateDemo.dll
+  IngresDates.IngresTests -> ${HANDOFF_ROOT}/tests/IngresDates.IngresTests/bin/Debug/net10.0/IngresDates.IngresTests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:05.88
